@@ -1,61 +1,64 @@
-# Data Cleaning Project - Layoff Data
+# Data Cleaning & EDA Project – Layoff Data Analysis
 
 ## Project Overview
 
-This project focuses on cleaning and standardizing a dataset of company layoffs to prepare it for analysis. The raw data contains inconsistencies, missing values, and duplicates, which are addressed using SQL.
+This project focuses on cleaning, standardizing, and exploring a dataset of company layoffs. The raw data contained inconsistencies, missing values, and duplicates, which were addressed using SQL. Exploratory Data Analysis (EDA) was then performed to uncover trends and insights in the cleaned data.
 
 ## Data Source
 
-The dataset was gathered from public sources and contains information on company layoffs, including company name, location, industry, number of employees laid off, date, and funding raised.
-
-## Sample Data (Before Cleaning)
-
-Data set is provided as excel file.
+The dataset was compiled from public sources and contains information on company layoffs including company name, location, industry, the number of employees laid off, date, and funding raised.
 
 ## Data Cleaning Steps
 
-The following steps were performed to clean the data:
+The following steps were performed to clean the data using SQL:
 
 1.  **Duplicate Removal:**
 
-    *   Identified and removed duplicate rows based on multiple columns such as `company`, `location`, `industry`, `total_laid_off`, `percentage_laid_off`, `date`, `stage`, `country`, and `funds_raised_millions`.
+    *   Identified and removed duplicate rows based on multiple columns using SQL window functions.
 2.  **Data Standardization:**
 
-    *   Removed leading and trailing spaces from the `company` column.
-    *   Standardized values in the `industry` column (e.g., consolidated variations of 'Crypto' into a single category).
-    *   Standardized values in the `country` column (e.g., consolidated variations of 'United States' into a single category).
+    *   Standardized company names, industry classifications, and country names.
 3.  **Date Formatting:**
 
-    *   Converted the `date` column to a consistent date format (`YYYY-MM-DD`).
+    *   Converted date column to a consistent `YYYY-MM-DD` format.
 4.  **Missing Value Handling:**
 
-    *   Populated missing `industry` values based on the company if it could be inferred.
+    *   Imputed missing `industry` values based on company information.
     *   Removed rows where both `total_laid_off` and `percentage_laid_off` were null.
-5.  **Unnecessary Column Removal:**
 
-    *   Removed the `row_num` column, which was used only for duplicate identification.
+## Exploratory Data Analysis (EDA)
+
+After cleaning, EDA was conducted using SQL to discover key trends:
+
+*   **Layoff Timeline Analysis:** Identified peak layoff months and years.
+*   **Industry Analysis:** Determined which industries were most heavily impacted by layoffs.
+*   **Company Analysis:** Ranked companies by total layoff count.
+*   **Geographic Analysis:** Analyzed layoff distribution by country.
+*   **Rolling Totals:** Calculated cumulative layoff counts to identify long-term trends.
 
 ## Technologies Used
 
 *   MySQL
 *   SQL
 
-## SQL Script
+## SQL Scripts
 
-The SQL script used for data cleaning is available in `data_cleaning_script.sql`.
+*   `data_cleaning_script.sql`: Contains the SQL script used for data cleaning.
+*   `EDA.sql`: Contains the SQL script used for exploratory data analysis.
+
 
 ## File Structure
 
 
 *   `README.md`: This file.
-*   `data_cleaning_script.sql`: The SQL script used for data cleaning.
-*   `Layoffs_data_before_cleaning.jpg`: Data before cleaning (replace with the actual file).
+*   `data_cleaning_script.sql`: SQL script for cleaning the data.
+*   `EDA.sql`: SQL script for the exploratory data analysis.
 
 ## How to Use
 
-1.  **Set up your MySQL database:** Make sure you have MySQL installed and running.
+1.  **Set up your MySQL database:** Ensure MySQL is installed and running.
 2.  **Import the data:** Load the raw layoff data into a table named `layoffs` in your MySQL database.
-3.  **Run the SQL script:** Execute the `data_cleaning_script.sql` script to perform the data cleaning steps.
-
-
+3.  **Run the SQL scripts:**
+    *   Execute `data_cleaning_script.sql` to clean the data.
+    *   Execute `eda_code.sql` to perform the exploratory data analysis.
 
